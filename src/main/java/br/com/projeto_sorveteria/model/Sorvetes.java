@@ -11,6 +11,7 @@ package br.com.projeto_sorveteria.model;
 public class Sorvetes {
     private String sabor;
     private int quantidade;
+    private int id;
 
     public String getSabor() {
         return sabor;
@@ -26,6 +27,14 @@ public class Sorvetes {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     
