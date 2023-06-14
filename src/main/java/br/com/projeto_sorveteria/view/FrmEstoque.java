@@ -97,6 +97,7 @@ public class FrmEstoque extends javax.swing.JFrame {
 
         painelEstoque.setBackground(new java.awt.Color(255, 255, 255));
 
+        tabelaEstoque.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         tabelaEstoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -104,13 +105,24 @@ public class FrmEstoque extends javax.swing.JFrame {
             new String [] {
                 "Id", "Sabor", "Quantidade"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tabelaEstoque.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabelaEstoqueMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tabelaEstoque);
+        if (tabelaEstoque.getColumnModel().getColumnCount() > 0) {
+            tabelaEstoque.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton1.setText("Adicionar ao Estoque");
@@ -130,7 +142,8 @@ public class FrmEstoque extends javax.swing.JFrame {
 
         txtEstoque.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
-        jLabel2.setText("Insira aqui o valor a ser adicionado ou subtraido");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel2.setText("Insira aqui o valor a ser adicionado ou subtraído");
 
         txtSabor.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
