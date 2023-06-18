@@ -115,4 +115,18 @@ public class SorvetesDAO {
         }
     }
     
+    //METODO QUE SOMA A QUANTIDADE TOTAL
+    
+    public int somarEstoque() throws SQLException{
+            String sql = "SELECT SUM(quantidade) FROM tb_sabores";
+            
+            PreparedStatement stmt = con.prepareStatement(sql);
+            
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            int total = rs.getInt(1);
+            
+            return total;
+    }
+    
 }
